@@ -188,11 +188,14 @@ namespace Quartz.Examples.AspNetCore
 
             app.UseStaticFiles();
             app.UseRouting();
+            
+            app.UseSignalR()
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
                 endpoints.MapHealthChecksUI();
+                endpoints.MapControllers()
             });
         }
     }
