@@ -13,7 +13,7 @@ namespace OpenTelemetry.Trace
         {
             var options = new QuartzInstrumentationOptions();
             configure?.Invoke(options);
-            return builder.AddInstrumentation(t => new QuartzJobInstrumentation(t, options));
+            return builder.AddInstrumentation(() => new QuartzJobInstrumentation(options));
         }
     }
 }

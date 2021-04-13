@@ -12,14 +12,14 @@ namespace Quartz.OpenTelemetry.Instrumentation
     {
         private readonly DiagnosticSourceSubscriber diagnosticSourceSubscriber;
 
-        public QuartzJobInstrumentation(ActivitySourceAdapter activitySource)
-            : this(activitySource, new QuartzInstrumentationOptions())
+        public QuartzJobInstrumentation()
+            : this(new QuartzInstrumentationOptions())
         {
         }
 
-        public QuartzJobInstrumentation(ActivitySourceAdapter activitySource, QuartzInstrumentationOptions options)
+        public QuartzJobInstrumentation(QuartzInstrumentationOptions options)
         {
-            var listener = new QuartzDiagnosticListener(DiagnosticHeaders.DefaultListenerName, options, activitySource);
+            var listener = new QuartzDiagnosticListener(DiagnosticHeaders.DefaultListenerName, options);
             diagnosticSourceSubscriber = new DiagnosticSourceSubscriber(listener, null);
             diagnosticSourceSubscriber.Subscribe();
         }

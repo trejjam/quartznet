@@ -9,13 +9,11 @@ namespace Quartz.OpenTelemetry.Instrumentation.Implementation
     internal sealed class QuartzDiagnosticListener : ListenerHandler
     {
         private readonly QuartzInstrumentationOptions options;
-        private readonly ActivitySourceAdapter activitySource;
 
-        public QuartzDiagnosticListener(string sourceName, QuartzInstrumentationOptions options, ActivitySourceAdapter activitySource) 
+        public QuartzDiagnosticListener(string sourceName, QuartzInstrumentationOptions options) 
             : base(sourceName)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
-            this.activitySource = activitySource;
         }
 
         public override void OnStartActivity(Activity activity, object payload)
